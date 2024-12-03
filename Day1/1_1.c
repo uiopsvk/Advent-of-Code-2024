@@ -19,8 +19,6 @@ void sort(int* array, int len) {
     }
 }
 
-
-
 int main(int argc, char** argv) {
     if (argc != 2) {
         return 1;
@@ -51,14 +49,28 @@ int main(int argc, char** argv) {
         x[n_of_lines-1] = num1;
         y[n_of_lines-1] = num2;
     }
+    // task two
     
+    int sum_of_scores = 0;
+    for (int i = 0; i < n_of_lines; i++) {
+        int count = 0;
+        for (int j = 0; j < n_of_lines; j++) {
+            if (x[i] == y[j]) {
+                count++;
+            }
+        }
+        sum_of_scores += x[i]*count;
+    }
+
+    printf("%d\n", sum_of_scores);
+    // task one
     sort(x, n_of_lines);
     sort(y, n_of_lines);
     for (int i = 0; i < n_of_lines; i++) {
         sum += abs(x[i]-y[i]);
     }
     printf("%d\n", sum);
-    
+
     free(x);
     free(y);
     fclose(f);
